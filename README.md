@@ -22,12 +22,3 @@ class Sergeant:
     def lead_training(self, topic):
         """Проведення занять"""
         return f"{self.rank} {self.name} проводить тренування на тему: {topic}"
-
-
-# Приклад використання
-if __name__ == "__main__":
-    sergeant = Sergeant("Іван Петренко", "1-ше відділення")
-    sergeant.assign_task("Перевірити готовність особового складу")
-    sergeant.assign_task("Організувати стройове заняття")
-    print(sergeant.report_status())
-    print(sergeant.lead_training("Тактика дій у бою"))
