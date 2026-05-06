@@ -1,24 +1,35 @@
-class Sergeant:
-    def __init__(self, name, unit, rank="Головний сержант"):
-        self.name = name
-        self.unit = unit
-        self.rank = rank
-        self.tasks = []
+# pz-UML
 
-    def assign_task(self, task):
-        """Додати завдання для виконання"""
-        self.tasks.append(task)
-        print(f"{self.rank} {self.name} доручив: {task}")
+## Система: Онлайн-магазин
 
-    def report_status(self):
-        """Звіт про виконання завдань"""
-        if not self.tasks:
-            return f"{self.rank} {self.name} не має активних завдань."
-        report = f"Звіт {self.rank} {self.name}:\n"
-        for i, task in enumerate(self.tasks, 1):
-            report += f"{i}. {task}\n"
-        return report
+---
 
-    def lead_training(self, topic):
-        """Проведення занять"""
-        return f"{self.rank} {self.name} проводить тренування на тему: {topic}"
+## Use Case
+
+```mermaid
+graph TD
+    User -->|Купити товар| System
+    Admin -->|Керувати товарами| System
+```
+
+---
+
+## Sequence
+
+```mermaid
+sequenceDiagram
+    User->>System: Обрати товар
+    System-->>User: Показати товар
+    User->>System: Купити
+```
+
+---
+
+## Activity
+
+```mermaid
+flowchart TD
+    A[Початок] --> B[Вибір товару]
+    B --> C[Покупка]
+    C --> D[Кінець]
+```
