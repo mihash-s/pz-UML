@@ -1,5 +1,3 @@
-Файл: sergeant.py
-
 class Sergeant:
     def __init__(self, name, unit, rank="Головний сержант"):
         self.name = name
