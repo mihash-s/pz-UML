@@ -1,36 +1,35 @@
-# Practical lesson pz-UML
-## Побудова повердінкових UML-діаграм для проєктування інформаційних систем
+Файл: sergeant.py
 
-> У цьому занятті студенти отримують практичні навички моделювання інформаційних систем за допомогою UML.
-> Мета — навчитися аналізувати вимоги до системи та візуалізувати її структуру й поведінку за допомогою поведінкових UML-діаграм.
+class Sergeant:
+    def __init__(self, name, unit, rank="Головний сержант"):
+        self.name = name
+        self.unit = unit
+        self.rank = rank
+        self.tasks = []
 
-## What need to do:
+    def assign_task(self, task):
+        """Додати завдання для виконання"""
+        self.tasks.append(task)
+        print(f"{self.rank} {self.name} доручив: {task}")
 
-* Обрати предметну область або просту інформаційну систему для моделювання
-* Побудувати діаграму варіантів використання (Use Case Diagram)
-* Побудувати діаграму послідовності (Sequence Diagram)
-* Побудувати діаграму діяльності (Activity Diagram)
-* Використати будь-який інструмент UML-моделювання (draw.io, Miro, lucidchart, Mermaidjs тощо)
+    def report_status(self):
+        """Звіт про виконання завдань"""
+        if not self.tasks:
+            return f"{self.rank} {self.name} не має активних завдань."
+        report = f"Звіт {self.rank} {self.name}:\n"
+        for i, task in enumerate(self.tasks, 1):
+            report += f"{i}. {task}\n"
+        return report
 
-## Acceptance criteria
+    def lead_training(self, topic):
+        """Проведення занять"""
+        return f"{self.rank} {self.name} проводить тренування на тему: {topic}"
 
-- Побудовано всі три UML-діаграми:
-    - Use Case Diagram
-    - Sequence Diagram
-    - Activity Diagram
-- Діаграми логічно пов’язані між собою та відповідають обраній предметній області
-- Коректно використані основні UML-нотації та позначення
-- Здобувач розуміє призначення кожної діаграми та може пояснити її зміст
-- Усі діаграми збережені у вигляді зображень або файлів проєкту або варіант markdown + mermaidjs
-- Опис роботи та діаграми оформлені в markdown
-- Надати посилання на виконанні діаграми в projectPlan
 
-## Usfull links
-
-[Як будувати UML-діаграми. Розбираємо три найпопулярніші варіанти](https://dou.ua/forums/topic/40575/)
-
-[The ultimate guide to UML diagrams](https://miro.com/diagramming/what-is-a-uml-diagram/)
-
-[Master the basics of Lucidchart in 3 minutes](https://www.lucidchart.com/pages/tutorial/uml-use-case-diagram#section_4)
-
-[Mermaidjs](https://mermaid.js.org/)
+# Приклад використання
+if __name__ == "__main__":
+    sergeant = Sergeant("Іван Петренко", "1-ше відділення")
+    sergeant.assign_task("Перевірити готовність особового складу")
+    sergeant.assign_task("Організувати стройове заняття")
+    print(sergeant.report_status())
+    print(sergeant.lead_training("Тактика дій у бою"))
